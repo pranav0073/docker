@@ -1,22 +1,23 @@
-language: generic 
-sudo: required
-services: 
-  - docker
-before_install:
-  - docker build -t pranav0073/docker -f Dockerfile.dev .
-script:
-  - docker run -e CI=true pranav0073/docker npm run test -- --coverage
+  
+  language: generic 
+  sudo: required
+  services: 
+    - docker
+  before_install:
+    - docker build -t pranav0073/docker -f Dockerfile.dev .
+  script:
+    - docker run -e CI=true pranav0073/docker npm run test -- --coverage
 
 
-deploy:
-  provider: elasticbeanstalk
-  region: "ap-south-1"
-  app: "docker"
-  env: "Docker-env"
-  bucket_name: "elasticbeanstalk-ap-south-1-732704833026"
-  bucket_path: "docker"
-  on:
-    branch: master
-  access_key_id: "$AWS_ACCESS_KEY"
-  secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+  deploy:
+    provider: elasticbeanstalk
+    region: "ap-south-1"
+    app: "docker"
+    env: "Docker-env"
+    bucket_name: "elasticbeanstalk-ap-south-1-732704833026"
+    bucket_path: "docker"
+    on:
+      branch: master
+    access_key_id: "$AWS_ACCESS_KEY"
+    secret_access_key:
+      secure: "$AWS_SECRET_KEY"
