@@ -13,7 +13,6 @@ deploy:
   app: "docker"
   env: "Docker-env"
   bucket_name: "elasticbeanstalk-ap-south-1-732704833026"
-  bucket_path: "docker"
   on:
     branch: master
   access_key_id: $access_key_id
