@@ -15,6 +15,7 @@ deploy:
   bucket_name: "elasticbeanstalk-ap-south-1-732704833026"
   on:
     branch: master
-  access_key_id: $access_key_id
+  access_key_id:
+    secure: $access_key_id
   secret_access_key:
-    secure: "$secret_access_key"
+    secure: $secret_access_key
