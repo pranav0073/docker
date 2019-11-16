@@ -6,3 +6,16 @@ before_install:
   - docker build -t pranav0073/docker -f Dockerfile.dev .
 script:
   - docker run -e CI=true pranav0073/docker npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-732704833026"
+  path: "docker"
+  on:
+    branch: master
+  access_key_id: $access_key_id
+  secret_access_key:
+    secure: $secret_access_key
